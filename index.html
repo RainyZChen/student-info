@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>学生信息</title>
+    <link rel="stylesheet" href="styles/reset.css">
+    <link rel="stylesheet" href="styles/common.css">
+    <link rel="stylesheet" href="styles/index.css">
+</head>
+<body>
+<!--学生信息展示页-->
+<div id="home" class="flex-center">
+    <div class="page-wrapper">
+        <div class="edge-padding">
+            <div class="city-list">
+                <ul id="cities">
+<!--                    <li>南京</li>-->
+<!--                    <li>南京</li>-->
+                    <a href="#">+</a>
+                </ul>
+            </div>
+            <div class="batch-operate">
+                <input type="checkbox">
+                <a href="#" class="add-info font-middle">新增</a>
+                <a href="#" class="batch-delete font-middle">批量删除</a>
+            </div>
+            <div class="info-list">
+                <ul>
+                    <li>
+                        <input type="checkbox">
+                        <p class="text">这是信息</p>
+                        <div class="single-operate">
+                            <a href="#" class="delete-info">编辑</a>
+                            <a href="#" class="delete-info">删除</a>
+                            <a href="#" class="delete-info">上移</a>
+                            <a href="#" class="delete-info">下移</a>
+                        </div>
+                    </li>
+                    <li>
+                        <input type="checkbox">
+                        <p class="text">这是信息</p>
+                        <div class="single-operate">
+                            <a href="#" class="delete-info">编辑</a>
+                            <a href="#" class="delete-info">删除</a>
+                            <a href="#" class="delete-info">上移</a>
+                            <a href="#" class="delete-info">下移</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--学生信息编辑页-->
+<div id="edit" class="edit flex-center">
+    <div class="edit-list">
+        <div class="username">
+            <span>姓名</span>
+            <input type="text" id="username">
+        </div>
+        <div class="age">年龄
+            <input type="text" id="age">
+        </div>
+        <div class="city">城市
+            <select name="city" id="city">
+                <option>成都</option>
+                <option>南京</option>
+                <option>北京</option>
+                <option>上海</option>
+            </select>
+        </div>
+    </div>
+    <div class="edit-operate">
+        <a href="#" class="close">取消</a>
+        <a href="#" class="save">保存</a>
+    </div>
+</div>
+<script type="text/template" id="city-template">
+    <li id="<%= id %>"><%= cityName%></li>
+</script>
+<script type="text/template" id="info-template">
+    <li>
+        <input type="checkbox">
+        <p class="text">姓名：<%= username%>年龄：<%= age%> 所在城市：<%= cityName%></p>
+        <div class="single-operate">
+            <a href="#" class="delete-info">编辑</a>
+            <a href="#" class="delete-info">删除</a>
+            <a href="#" class="delete-info">上移</a>
+            <a href="#" class="delete-info">下移</a>
+        </div>
+    </li>
+</script>
+<script data-main="js/main.js" src="lib/require.js"></script>
+<script src="js/require_config.js"></script>
+</body>
+</html>
