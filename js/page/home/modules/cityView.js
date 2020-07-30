@@ -32,9 +32,13 @@ define(function (require, exports, module) {
             cityTable.push(city);
             this.render(city);
         },
-        renderCitySelect: function (city) {
+        renderCitySelect: function (city, cityName) {
             const optionCity = _.template($('#city-option-template').html())(city.attributes)
-            $('#city').append($(optionCity));
+            const $optionCity = $(optionCity);
+            $('#city').append($optionCity);
+            if (city.attributes.cityName===cityName) {
+                $optionCity.attr('selected', 'selected');
+            }
         }
     });
 

@@ -56,15 +56,16 @@ define(function (require, exports, module) {
             }
         },
         editOrInit: function (infoView) {
+            let cityNameStr = null;
             if (infoView) {
                 const infoModel = infoView.info.attributes;
                 $(this.username).val(infoModel.username);
                 $(this.age).val(infoModel.age);
-                // $(this.city).val(infoModel.cityName);
+                cityNameStr = infoModel.cityName;
             }
             const cityView = new CityView
             for (let i = 0; i < cityTable.length; i++) {
-                cityView.renderCitySelect(cityTable[i]);
+                cityView.renderCitySelect(cityTable[i], cityNameStr);
             }
         }
     });
