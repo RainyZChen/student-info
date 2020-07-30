@@ -9,6 +9,13 @@ define(function (require, exports, module) {
             username: null,
             age: null,
             cityName: null
+        },
+        validate: function (attributes) {
+            for (let attr in attributes) {
+                if (attributes[attr]) {
+                    // alert(`${attr}参数没有填写`)
+                }
+            }
         }
     });
 });

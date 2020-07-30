@@ -11,6 +11,7 @@
 .page-wrapper .edge-padding .batch-operate a.batch-delete{background-color: red}
 .page-wrapper .edge-padding .info-list ul{border-top: 1px solid rgba(255,255,255,1);}
 .page-wrapper .edge-padding .info-list ul li{display: flex;align-items: center;min-height: 10px;padding: 10px 0;overflow: hidden;border-bottom: 1px solid rgba(255,255,255,1)}
+.page-wrapper .edge-padding .info-list ul li:hover{background-color: #803AF0}
 .page-wrapper .edge-padding .info-list ul li p{float: left;width: 520px;}
 .page-wrapper .edge-padding .info-list ul li div{float: right;min-width: 100px;width: 220px;text-align: right;}
 .page-wrapper .edge-padding .info-list ul li div a{background-color: #5183E6;border-radius: 15px;padding: 0 5px;font-size: 18px}

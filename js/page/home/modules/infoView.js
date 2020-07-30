@@ -4,7 +4,7 @@ define(function (require, exports, module) {
     const infoTable = require('infoTable');
     module.exports = InfoView = Backbone.View.extend({
         initialize: function (editView) {
-            _.bindAll(this, 'onDelete','onEdit','onUp','onDown','add');
+            _.bindAll(this, 'onDelete','onEdit','onUp','onDown','add','update');
             this.editView = editView;
         },
         getCityStr: _.template($('#info-template').html()),
@@ -23,6 +23,15 @@ define(function (require, exports, module) {
             infoTable.push(info);
             this.render(info);
             this.info = info;
+        },
+        update: function (info) {
+            for (let i = 0; i < infoTable.length; i++) {
+                if (infoTable[i].get('id') === info.id) {
+                    this.el.find('p').text($(this.getCityStr(info)).find('p').text());
+                    infoTable[i].set(info, {'validate': true});
+                }
+            }
+
         },
         onDelete: function () {
             if (confirm('是否确定删除？')) {

@@ -12,7 +12,7 @@ define(function (require, exports, module) {
         city: "#city",
 
         initialize: function (infoListView) {
-            _.bindAll(this, 'onSave','editOrInit');
+            _.bindAll(this, 'onSave','editOrInit','show');
             this.infoListView = infoListView;
         },
         events: {
@@ -20,6 +20,7 @@ define(function (require, exports, module) {
             'click #save': 'onSave',
         },
         show: function (infoView) {
+            this.infoView = infoView;
             $('#home').addClass('unshow');
             $('body').addClass('background-gray');
             $(this.el).removeClass('unshow');
@@ -34,10 +35,17 @@ define(function (require, exports, module) {
             $('#home').removeClass('unshow');
         },
         onSave: function () {
-            const info = new Info
-            // TODO
-            info.set({id:this.getMaxId(infoTable),username: $(this.username).val(), age: $(this.age).val(), cityName: $(this.city).val()});
-            this.infoListView.save(info)
+            if (!this.infoView) {
+                const info = new Info();
+                info.set({id:this.getMaxId(infoTable),username: $(this.username).val(), age: $(this.age).val(), cityName: $(this.city).val()},{'validate': true});
+                this.infoListView.save(info);
+            } else {
+                const infoModel = {id:this.infoView.info.attributes.id, username: $(this.username).val(), age: $(this.age).val(), cityName:$(this.city).val()};
+                this.infoView.update(infoModel);
+                $('#home').removeClass('unshow');
+                $('body').removeClass('background-gray');
+                $('#edit').addClass('unshow')
+            }
             $(this.el).find('option').remove();
         },
         getMaxId: function (cityTable) {
