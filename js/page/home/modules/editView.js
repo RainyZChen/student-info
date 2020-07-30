@@ -12,16 +12,19 @@ define(function (require, exports, module) {
         city: "#city",
 
         initialize: function (infoListView) {
-            _.bindAll(this, 'onSave');
-            console.log("测试EditView的加载")
+            _.bindAll(this, 'onSave','editOrInit');
             this.infoListView = infoListView;
         },
         events: {
             'click #close': 'onClose',
             'click #save': 'onSave',
         },
-        show: function () {
-            $(this.el).removeClass('unshow')
+        show: function (infoView) {
+            $('#home').addClass('unshow');
+            $('body').addClass('background-gray');
+            $(this.el).removeClass('unshow');
+            $('#edit input').val('');
+            this.editOrInit(infoView);
         },
         hide:function () {
             $(this.el).add('unshow')
@@ -32,6 +35,7 @@ define(function (require, exports, module) {
         },
         onSave: function () {
             const info = new Info
+            // TODO
             info.set({id:this.getMaxId(infoTable),username: $(this.username).val(), age: $(this.age).val(), cityName: $(this.city).val()});
             this.infoListView.save(info)
             $(this.el).find('option').remove();
@@ -52,9 +56,15 @@ define(function (require, exports, module) {
             }
         },
         editOrInit: function (infoView) {
-            cityView = new CityView
+            if (infoView) {
+                const infoModel = infoView.info.attributes;
+                $(this.username).val(infoModel.username);
+                $(this.age).val(infoModel.age);
+                // $(this.city).val(infoModel.cityName);
+            }
+            const cityView = new CityView
             for (let i = 0; i < cityTable.length; i++) {
-                cityView.renderCitySelect(cityTable[i])
+                cityView.renderCitySelect(cityTable[i]);
             }
         }
     });

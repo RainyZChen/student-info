@@ -15,13 +15,10 @@ define(function (require, exports, module) {
             $('.batch-delete').on('click', this.onBatchDelete)
         },
         onAdd: function () {
-            $('#home').addClass('unshow')
-            $('body').addClass('background-gray');
             this.editView.show();
-            this.editView.editOrInit();
         },
         save: function (info) {
-            const infoView = new InfoView
+            const infoView = new InfoView(this.editView)
             infoView.add(info);
             $('#home').removeClass('unshow');
             $('body').removeClass('background-gray');
@@ -44,8 +41,6 @@ define(function (require, exports, module) {
                 }
             })
         }
-
-
 
     });
 });

@@ -3,8 +3,9 @@ define(function (require, exports, module) {
     const _ = require('underscore');
     const infoTable = require('infoTable');
     module.exports = InfoView = Backbone.View.extend({
-        initialize: function () {
-            _.bindAll(this, 'onDelete','onEdit','onUp','onDown');
+        initialize: function (editView) {
+            _.bindAll(this, 'onDelete','onEdit','onUp','onDown','add');
+            this.editView = editView;
         },
         getCityStr: _.template($('#info-template').html()),
         render: function (info) {
@@ -19,20 +20,17 @@ define(function (require, exports, module) {
             return this
         },
         add: function (info) {
-            this.id = info.attributes.id;
             infoTable.push(info);
             this.render(info);
-            console.log(this.id)
+            this.info = info;
         },
         onDelete: function () {
             if (confirm('是否确定删除？')) {
-                console.log(this.el)
                 this.el.remove();
             }
         },
         onEdit: function () {
-            console.log("onEdit")
-
+            this.editView.show(this);
         },
         onUp: function () {
             const $prev = $(this.el).prev('li');
