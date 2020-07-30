@@ -15,9 +15,6 @@ define(function (require, exports, module) {
             _.bindAll(this, 'onSave');
             console.log("测试EditView的加载")
             this.infoListView = infoListView;
-            $('#edit input').val('')
-            this.show();
-            this.editOrInit();
         },
         events: {
             'click #close': 'onClose',
@@ -34,7 +31,6 @@ define(function (require, exports, module) {
             $('#home').removeClass('unshow');
         },
         onSave: function () {
-            console.log('sdfsdfsfsdfsdfsd')
             const info = new Info
             info.set({id:this.getMaxId(infoTable),username: $(this.username).val(), age: $(this.age).val(), cityName: $(this.city).val()});
             this.infoListView.save(info)

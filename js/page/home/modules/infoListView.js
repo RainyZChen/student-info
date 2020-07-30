@@ -9,6 +9,7 @@ define(function (require, exports, module) {
         addInfo: $('.batch-operate .add-info'),
         initialize: function () {
             _.bindAll(this, 'onAdd');
+            this.editView = new EditView(this);
             this.addInfo.on('click', this.onAdd);
             $('#batch-check').on('click', this.onBatchCheck);
             $('.batch-delete').on('click', this.onBatchDelete)
@@ -16,7 +17,8 @@ define(function (require, exports, module) {
         onAdd: function () {
             $('#home').addClass('unshow')
             $('body').addClass('background-gray');
-            new EditView(this);
+            this.editView.show();
+            this.editView.editOrInit();
         },
         save: function (info) {
             const infoView = new InfoView
