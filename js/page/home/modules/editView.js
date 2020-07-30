@@ -1,5 +1,6 @@
 define(function (require, exports, module) {
     const Backbone = require('backbone');
+    const _ = require('underscore');
     const infoTable = require('infoTable');
     const cityTable = require('cityTable');
     const Info = require('info');
@@ -11,12 +12,12 @@ define(function (require, exports, module) {
         city: "#city",
 
         initialize: function (infoListView) {
+            _.bindAll(this, 'onSave');
             console.log("测试EditView的加载")
             this.infoListView = infoListView;
             $('#edit input').val('')
             this.show();
             this.editOrInit();
-            // document绑定点击事件，排除本el的点击，点击过后解绑
         },
         events: {
             'click #close': 'onClose',
@@ -33,9 +34,11 @@ define(function (require, exports, module) {
             $('#home').removeClass('unshow');
         },
         onSave: function () {
+            console.log('sdfsdfsfsdfsdfsd')
             const info = new Info
             info.set({id:this.getMaxId(infoTable),username: $(this.username).val(), age: $(this.age).val(), cityName: $(this.city).val()});
             this.infoListView.save(info)
+            $(this.el).find('option').remove();
         },
         getMaxId: function (cityTable) {
             if (cityTable[0]) {
