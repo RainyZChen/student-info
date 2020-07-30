@@ -11,7 +11,7 @@ define(function (require, exports, module) {
         getCityStr: _.template($('#city-template').html()),
         render: function (city) {
             this.model = city.attributes;
-            $('.city-list a').before(this.getCityStr(city.attributes));
+            $('.city-list a').before(this.getCityStr(this.model));
             this.el = $(`#${city.attributes.id}`)
                 .on('click', this.onDelete)
                 .hover(this.onHover, this.onOut);

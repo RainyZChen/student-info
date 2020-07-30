@@ -3,3 +3,6 @@
 .font-middle{font-size: 18px}
 .flex-center{display: flex;justify-content: center;align-items: center;flex-direction: column}
 input[type=checkbox]{width: 18px;height: 18px}
+.background-gray{background-color:rgba(155,155,155,0.1);}
+.show{display: block}
+.unshow{display: none}

@@ -1,17 +1,53 @@
 define(function (require, exports, module) {
     const Backbone = require('backbone');
+    const infoTable = require('infoTable');
+    const Info = require('info');
     module.exports = EditView = Backbone.View.extend({
         el: "#edit",
-        initialize: function () {
+        username: "#username",
+        age: "#age",
+        city: "#city",
+        initialize: function (infoListView) {
             console.log("测试EditView的加载")
+            this.infoListView = infoListView;
+            $('#edit input').val('')
+            this.show();
+            // document绑定点击事件，排除本el的点击，点击过后解绑
+        },
+        events: {
+            'click #close': 'onClose',
+            'click #save': 'onSave',
         },
         show: function () {
-            $(this.el).show()
+            $(this.el).removeClass('unshow')
         },
         hide:function () {
-            $(this.el).hide();
+            $(this.el).add('unshow')
+        },
+        onClose: function () {
+            $(this.el).addClass('unshow');
+            $('#home').removeClass('unshow');
+        },
+        onSave: function () {
+            const info = new Info
+            info.set({id:this.getMaxId(infoTable),username: $(this.username).val(), age: $(this.age).val(), cityName: $(this.city).val()});
+            this.infoListView.save(info)
+        },
+        getMaxId: function (cityTable) {
+            if (cityTable[0]) {
+                cityTable.sort(this.compare('id'));
+                return cityTable[cityTable.length - 1].get('id') + 1;
+            } else {
+                return 0;
+            }
+        },
+        compare: function (propertyName) {
+            return function (a, b) {
+                let value1 = Number.parseInt(a.get(propertyName));
+                let value2 = Number.parseInt(b.get(propertyName));
+                return value1 - value2;
+            }
         }
-
     });
 
 });

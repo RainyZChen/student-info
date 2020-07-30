@@ -30,7 +30,6 @@ define(function (require, exports, module) {
             cityView.add(city);
         },
         getMaxId: function (cityTable) {
-            console.log(cityTable)
             if (cityTable[0]) {
                 cityTable.sort(this.compare('id'));
                 return cityTable[cityTable.length - 1].get('id') + 1;

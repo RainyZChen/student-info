@@ -6,9 +6,9 @@ define(function (require, exports, module) {
         },
         defaults:{
             id: null,
-            userName: null,
+            username: null,
             age: null,
-            cityId: null
+            cityName: null
         }
     });
 });

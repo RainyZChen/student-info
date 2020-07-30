@@ -15,7 +15,7 @@
 .page-wrapper .edge-padding .info-list ul li div{float: right;min-width: 100px;width: 220px;text-align: right;}
 .page-wrapper .edge-padding .info-list ul li div a{background-color: #5183E6;border-radius: 15px;padding: 0 5px;font-size: 18px}
 /*编辑栏的展示页*/
-.edit{display: none;width: 300px;min-height: 200px;background-color: #dddddd}
+.edit{width: 300px;min-height: 200px;background-color: #dddddd;margin: 0 auto}
 .edit .edit-list div{margin: 10px 0;}
 .edit .edit-list div input{color: black}
 .edit .edit-list div select{color: black}

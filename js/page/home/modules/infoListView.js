@@ -1,19 +1,25 @@
 define(function (require, exports, module) {
     const Backbone = require('backbone');
     const _ = require('underscore');
-    const cityTable = require('cityTable');
-    const cityView = require('cityView');
-
-
+    const infoTable = require('infoTable');
+    const InfoView = require('infoView');
+    const EditView = require('editView');
     module.exports = InfoListView = Backbone.Model.extend({
         initialize: function () {
-            // _.bindAll(this, 'onAddCity');
-            // this.el = $('#cities a').on('click',this.onAddCity)
+            _.bindAll(this, 'onAdd');
+            $('.batch-operate .add-info').on('click', this.onAdd);
         },
-        // onAddCity:function () {
-        //     const message = prompt();
-        //     // cityView.render();
-        //
-        // }
+        onAdd: function () {
+            $('#home').addClass('unshow')
+            $('body').addClass('background-gray');
+            new EditView(this);
+        },
+        save: function (info) {
+            const infoView = new InfoView
+            infoView.add(info);
+            $('#home').removeClass('unshow');
+            $('body').removeClass('background-gray');
+            $('#edit').addClass('unshow')
+        }
     });
 });
