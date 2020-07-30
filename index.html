@@ -20,14 +20,14 @@
                 </ul>
             </div>
             <div class="batch-operate">
-                <input type="checkbox">
+                <input id="batch-check" type="checkbox">
                 <a href="#" class="add-info font-middle">新增</a>
                 <a href="#" class="batch-delete font-middle">批量删除</a>
             </div>
             <div class="info-list">
                 <ul>
                     <li>
-                        <input type="checkbox">
+                        <input type="checkbox"/>
                         <p class="text">这是信息</p>
                         <div class="single-operate">
                             <a href="#" class="delete-info">编辑</a>
@@ -63,10 +63,10 @@
         </div>
         <div class="city">城市
             <select name="cityName" id="city">
-                <option>成都</option>
-                <option>南京</option>
-                <option>北京</option>
-                <option>上海</option>
+<!--                <option>成都</option>-->
+<!--                <option>南京</option>-->
+<!--                <option>北京</option>-->
+<!--                <option>上海</option>-->
             </select>
         </div>
     </div>
@@ -81,7 +81,7 @@
 <script type="text/template" id="info-template">
     <li>
         <input type="checkbox">
-        <p class="text">姓名：<%= username%>       年龄：<%= age%>      所在城市：<%= cityName%></p>
+        <p class="text">姓名：<%= username%>年龄：<%= age%>所在城市：<%= cityName%></p>
         <div class="single-operate">
             <a href="#" class="delete-info">编辑</a>
             <a href="#" class="delete-info">删除</a>
@@ -89,6 +89,9 @@
             <a href="#" class="delete-info">下移</a>
         </div>
     </li>
+</script>
+<script type="text/template" id="city-option-template">
+    <option><%=cityName%></option>
 </script>
 <script data-main="js/main.js" src="lib/require.js"></script>
 <script src="js/require_config.js"></script>

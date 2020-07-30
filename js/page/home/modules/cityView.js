@@ -31,6 +31,10 @@ define(function (require, exports, module) {
         add: function (city) {
             cityTable.push(city);
             this.render(city);
+        },
+        renderCitySelect: function (city) {
+            const optionCity = _.template($('#city-option-template').html())(city.attributes)
+            $('#city').append($(optionCity));
         }
     });
 

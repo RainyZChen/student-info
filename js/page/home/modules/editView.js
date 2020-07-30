@@ -1,17 +1,21 @@
 define(function (require, exports, module) {
     const Backbone = require('backbone');
     const infoTable = require('infoTable');
+    const cityTable = require('cityTable');
     const Info = require('info');
+    const CityView = require('cityView');
     module.exports = EditView = Backbone.View.extend({
         el: "#edit",
         username: "#username",
         age: "#age",
         city: "#city",
+
         initialize: function (infoListView) {
             console.log("测试EditView的加载")
             this.infoListView = infoListView;
             $('#edit input').val('')
             this.show();
+            this.editOrInit();
             // document绑定点击事件，排除本el的点击，点击过后解绑
         },
         events: {
@@ -46,6 +50,12 @@ define(function (require, exports, module) {
                 let value1 = Number.parseInt(a.get(propertyName));
                 let value2 = Number.parseInt(b.get(propertyName));
                 return value1 - value2;
+            }
+        },
+        editOrInit: function (infoView) {
+            cityView = new CityView
+            for (let i = 0; i < cityTable.length; i++) {
+                cityView.renderCitySelect(cityTable[i])
             }
         }
     });
