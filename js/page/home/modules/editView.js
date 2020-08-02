@@ -33,6 +33,7 @@ define(function (require, exports, module) {
         onClose: function () {
             $(this.el).addClass('unshow');
             $('#home').removeClass('unshow');
+          $(this.el).find('option').remove();
         },
         onSave: function () {
             if (!this.infoView) {
